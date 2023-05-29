@@ -34,7 +34,6 @@ func getvms(authtoken string, address string, vmname string) {
 	  bodyText, err := ioutil.ReadAll(resp.Body)
 	  fmt.Println(string(bodyText))
 	  json.Unmarshal([]byte(bodyText), &result)
-	  //fmt.Println(len(result))
 	  for _,value  := range result {
 		fmt.Println("##################")
 		for x, y := range(value){
@@ -62,8 +61,8 @@ func getvms(authtoken string, address string, vmname string) {
   }
 }
 func basicAuth(username string, passwd string, address string) string {
-    // Warning, the following line ignore the verification if client certificate
     vcenterurl := "https://"+address+"/api/session"
+    // Warning, the following line ignore the verification if client certificate
     tr := &http.Transport{
         TLSClientConfig: &tls.Config{InsecureSkipVerify: true},
     }

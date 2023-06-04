@@ -142,16 +142,19 @@ func main() {
 	}
 
 	switch os.Args[1] {
+
 	//That should list all VMs, or a specific VM
 	case "listvms":
 		listVMsCmd.Parse(os.Args[2:])
 		authtoken := basicAuth(*listVMsUsername, *listVMsPassword, *listVMsURL)
 		getvms(authtoken, *listVMsURL, *listVMsVMName)
-		//That should create a virtual machine. Note:  still missing alot of configuration.
+
+	//That should create a virtual machine. Note:  still missing alot of configuration.
 	case "createvm":
 		createVMCmd.Parse(os.Args[2:])
 		authtoken := basicAuth(*createVMUsername, *createVMPassword, *createVMURL)
 		createvm(authtoken, *createVMURL)
+
 	//That will just print a new token, in case you want to use it with other tools (e.g. curl)
 	case "createtoken":
 		createTokenCmd.Parse(os.Args[2:])
